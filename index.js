@@ -36,6 +36,7 @@ const postToInsta = async () => {
         file: imageBuffer,
         caption: `${imageArray[i].text}`,
       });
+      console.log(`image ${i+1} uploaded`);
       // 30 second timer.
     }, 30000);
     // await ig.publish.photo({
