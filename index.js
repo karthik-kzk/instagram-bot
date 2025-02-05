@@ -12,7 +12,7 @@ const { IgApiClient } = require("instagram-private-api");
 const { get } = require("request-promise");
 const CronJob = require("cron").CronJob;
 const { scrapeSubreddit } = require("./scrap");
-// import scrapeSubreddit from "./scrap";
+const {test} =require("./test");
 
 const postToInsta = async () => {
   const ig = new IgApiClient();
@@ -36,9 +36,9 @@ const postToInsta = async () => {
         file: imageBuffer,
         caption: `${imageArray[i].text}`,
       });
-      console.log(`image ${i+1} uploaded`);
+      console.log(`image ${i + 1} uploaded`);
       // 30 second timer.
-    }, 30000);
+    }, parseInt(i + `0000`));
     // await ig.publish.photo({
     //     file: imageBuffer,
     //     caption: 'Really nice photo from the internet!',
@@ -50,3 +50,4 @@ postToInsta();
 // });
 
 // cronInsta.start();
+// test();
