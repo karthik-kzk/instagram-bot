@@ -16,6 +16,7 @@ const {test} =require("./test");
 
 const postToInsta = async () => {
   const ig = new IgApiClient();
+  const start = Date.now();
   ig.state.generateDevice(process.env.IG_USERNAME);
   await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
 
@@ -32,11 +33,16 @@ const postToInsta = async () => {
     });
 
     setTimeout(async () => {
+       const millis = Date.now() - start;
+
+      
       await ig.publish.photo({
         file: imageBuffer,
         caption: `${imageArray[i].text}`,
       });
-      console.log(`image ${i + 1} uploaded`);
+      console.log(
+        `image ${i + 1} uploaded in ${Math.floor(millis / 1000)} seconds`
+      );
       // 30 second timer.
     }, parseInt(i + `0000`));
     // await ig.publish.photo({
