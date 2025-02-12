@@ -9,17 +9,18 @@ const  snoowrap = require("snoowrap");
     password: process.env.REDDIT_PASSWORD,
   });
 
-  const subreddit = await r.getSubreddit("dankmemes");
-  const topPosts = await subreddit.getTop({ time: "day", limit: 3 });
+  const subreddit = await r.getSubreddit("funnymemes");
+  const topPosts = await subreddit.getTop({ time: "day", limit: 5 });
 
   let data = [];
 
   topPosts.forEach((post) => {
-    data.push({
-      link: post.url,
-      text: post.title,
-      score: post.score,
-    });
+    !post.is_video &&
+      data.push({
+        link: post.url,
+        text: post.title,
+        score: post.score,
+      });
   });
 return data;
   // console.log(data);
