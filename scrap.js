@@ -10,7 +10,7 @@ const  snoowrap = require("snoowrap");
   });
 
   const subreddit = await r.getSubreddit("funnymemes");
-  const topPosts = await subreddit.getTop({ time: "day", limit: 5 });
+  const topPosts = await subreddit.getTop({ time: "day", limit: 5, over_18 :false});
 
   let data = [];
 
